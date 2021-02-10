@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Insect assignment</title>
+    <style>
+        h1 {
+            text-transform: uppercase;
+            text-align:centre;
+        }
+        table {
+            display:block;
+            margin-left:auto;
+            margin-right:auto;
+            width:50%;
+            align-items:centre;
+            background-color:#466014;
+        }
+        table, th, td {
+            border: 3px solid black;
+            border-collapse:collapse;
+        }
+        td {
+            font-weight:500;
+            align:centre;
+        }
+        div {
+            display:block;
+            margin-left:auto;
+            margin-right:auto;
+            width:50%;
+            text-align:centre;
+        }
+    </style>
+  </head>
+  <body style="padding:4rem;background-color:#98d22a;">
+        <div>
+            <h1>Assignment 1</h1> 
+            <h2>Table, Inline and Embedded CSS</h2>
+        </div>
+        <table>
+            <caption style="caption-side:bottom">Insect info</caption>
+            <tr>
+                <th rowspan="2">Name</th>
+                <th colspan="4">Insect</th>
+            </tr>
+            <tr>
+                <th>Colours</th>
+                <th>Indigenous Region</th>
+                <th>Harmful</th>
+                <th>Lifespan</th>
+            </tr>
+            <tr>
+                <td>
+                    <img src="butterfly.png" alt="butterfly" width="200px" height="200px"/>
+                </td>
+                <td>Blue</td>
+                <td>Asia/Africa</td>
+                <td>No</td>
+                <td>12 months</td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <img src="ladybug.png" alt="ladybug" width="200px" height="200px"/>
+                </td>
+                <td>Red</td>
+                <td>Asia</td>
+                <td rowspan="2">Yes</td>
+                <td>2 years</td>
+            </tr>
+            <tr>
+                <td>Red</td>
+                <td>Europe</td>
+                <td>1.5 years</td>
+        </table>
+          
+  </body>
+</html>
