@@ -39,21 +39,13 @@ footer {
     filter: blur(3px);
 }
 
-.logo{
-    position:absolute;
-    top:25px;
-    left:25px;
-    width:100px; 
-    height:50px; 
-    background-color:white;
-}
-
 .navbar{
     display:flex;
     list-style-type:none;
     flex-direction:row;
     padding-left: 30rem;
     padding-top: 30px;
+    font-size: larger;
 }
 
 .navbar li {
@@ -66,6 +58,10 @@ footer {
     display:block;
 }
 
+.navbar li :hover{
+    background-color: white;
+}
+
 .content{
     margin:1rem;
     padding:0.5rem;
@@ -76,4 +72,58 @@ footer {
     margin-right: auto;
     color: white;
     background-color: rgba(26, 59, 43, 0.486);
+}
+
+@keyframes logo_animate {
+    0%   {background-color:white; transform: rotate(0deg);}
+    25%  {background-color:rgb(122, 122, 122); transform: rotate(90deg);}
+    50%  {background-color:black; transform: rotate(180deg);}
+    75%  {background-color:rgb(122, 122, 122); transform: rotate(270deg);}
+    100% {background-color:white; transform: rotate(360deg);}
+  }
+
+  .logo{
+    position:absolute;
+    top:25px;
+    left:25px;
+    width:100px; 
+    height:50px; 
+    animation-name: logo_animate;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+/*-----------------------------------------------------------------------------------------------*/
+
+.committee_content{
+    list-style-type: none;
+}
+
+.committee_content li {
+    text-indent: 3rem;
+}
+
+.committee_content li h3 {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+.track_list li{
+    text-indent: 3rem;
+}
+
+.track_list li p{
+    font-weight: 700;
+}
+
+.track_list li ul {
+    list-style-type: circle;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+.mail{
+    text-decoration: none;
+    color: white;
 }
