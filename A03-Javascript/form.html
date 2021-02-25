@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hospital Registration</title>
+    <link rel="stylesheet" href="style_form.css">    
+  </head>
+  <body style="background-color:#5e76a170;">
+        <span class="logo">
+            <img src="logo.png" alt="logo"  width="100" height="100">
+            <h4 class="hosp">Royal Institute of Medicine</h4>
+        </span>
+        <div class="form">
+            <h1>Patient Registration Form</h1> 
+            <table>
+                <form name="regform" id="regform">
+                    <tr>
+                    <td><label for="name">Name: </label></td>
+                    <td><input id="name" type="text" placeholder="John Johnson" onfocus="myFocus()" onblur="myBlur()" oninvalid="myInvalid()" required></td>
+                    </tr>
+                    <tr>
+                    <td><label for="address">Address: </label></td>
+                    <td><input id="address" type="text" onselect="mySelect()" required></td>
+                    </tr>
+                    <tr>
+                    <td><label for="age">Age: </label></td>
+                    <td><input id="age" type="number" onkeypress="myKeypress()" min="0" required></td>
+                    </tr>
+                    <tr>
+                    <td><label for="dob">Date of Birth: </label></td>
+                    <td><input id="dob" type="date" placeholder="dd/mm/yyyy"></td>
+                    </tr>
+                    <tr>
+                    <td><label >Gender: </label></td>
+                    <td><input id="male" type="radio" value="Male" name="gender"><label for="male">Male</label>
+                    <input id="female" type="radio" value="Female" name="gender"><label for="female">Female</label>
+                    <input id="other" type="radio" value="Other" name="gender"><label for="other">Other</label>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td><label for="status">Marital Status: </label></td>
+                    <td><select id="status" onchange="myChange()">
+                        <option value="none"></option>
+                        <option value="Married">Married</option>
+                        <option value="single">Single</option>
+                    </select></td>
+                    </tr>
+                    <tr>
+                    <td><label for="phone">Contact number: </label></td>
+                    <td><input id="phone" type="tel" pattern="##### #####" oninvalid="myNuminvalid()" required></td>
+                    </tr>
+                    <tr>
+                    <td><label for="addict">Addiction: </label></td>
+                    <td><select id="addict">
+                        <option value="none"></option>
+                        <option value="tobacco">Tobacco</option>
+                        <option value="alcohol">Alcohol</option>
+                        <option value="drugs">Drugs</option>
+                    </select></td>
+                    </tr>
+                    <tr>
+                    <td><a href="#submission"><input type="button" value="Submit" id="submit" onclick="mySubmit()"></a></td>
+                    <td><input type="button" value="Reset" id="resetBtn" onclick="myReset()"></td>
+                    </tr>
+                </form>
+            </table>
+        </div>
+        <div class="submission" id="submission">
+            <span class="logo">
+                <img src="logo.png" alt="logo"  width="100" height="100">
+                <h4 class="hosp">Royal Institute of Medicine</h4>
+            </span>
+            <table>
+                <tr>
+                    <th>Name</th><td id="r1"></td>
+                </tr>
+                <tr>
+                    <th>Address</th><td id="r2"></td>
+                </tr>
+                <tr>
+                    <th>Age</th><td id="r3"></td>
+                </tr>
+                <tr>
+                    <th>DOB</th><td id="r4"></td>
+                </tr>
+                <tr>
+                    <th>Gender</th><td id="r5"></td>
+                </tr>
+                <tr>
+                    <th>Marital Status</th><td id="r6"></td>
+                </tr>
+                <tr>
+                    <th>Contact</th><td id="r7"></td>
+                </tr>
+                <tr>
+                    <th>Addiction</th><td id="r8"></td>
+                </tr>
+            </table>
+        </div>
+        <script src="script_form.js"></script>
+  </body>
+</html>
