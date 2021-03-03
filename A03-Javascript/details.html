@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Hospital Registration</title>
+    <title>Patient Details</title>
     <link rel="stylesheet" href="style_form.css">    
   </head>
   <body style="background-color:#5e76a170;">
@@ -10,32 +10,43 @@
             <img src="logo.png" alt="logo"  width="100" height="100">
             <h4 class="hosp">Royal Institute of Medicine</h4>
         </span>
-        <table>
-            <tr>
-                <th>Name</th><td id="r1"></td>
-            </tr>
-            <tr>
-                <th>Name</th><td id="r2"></td>
-            </tr>
-            <tr>
-                <th>Name</th><td id="r3"></td>
-            </tr>
-            <tr>
-                <th>Name</th><td id="r4"></td>
-            </tr>
-            <tr>
-                <th>Name</th><td id="r5"></td>
-            </tr>
-            <tr>
-                <th>Name</th><td id="r6"></td>
-            </tr>
-            <tr>
-                <th>Name</th><td id="r7"></td>
-            </tr>
-            <tr>
-                <th>Name</th><td id="r8"></td>
-            </tr>
-        </table>
-        <script src="script_form.js"></script>
+        <div class="submission" id="submission">
+            <table align="center">
+                <tr>
+                    <th>Name</th><td id="r1"></td>
+                </tr>
+                <tr>
+                    <th>Address</th><td id="r2"></td>
+                </tr>
+                <tr>
+                    <th>Age</th><td id="r3"></td>
+                </tr>
+                <tr>
+                    <th>DOB</th><td id="r4"></td>
+                </tr>
+                <tr>
+                    <th>Gender</th><td id="r5"></td>
+                </tr>
+                <tr>
+                    <th>Marital Status</th><td id="r6"></td>
+                </tr>
+                <tr>
+                    <th>Contact</th><td id="r7"></td>
+                </tr>
+                <tr>
+                    <th>Addiction</th><td id="r8"></td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            document.getElementById("r1").innerHTML = localStorage.getItem("name");
+            document.getElementById("r2").innerHTML = localStorage.getItem("address");
+            document.getElementById("r3").innerHTML = localStorage.getItem("age");
+            document.getElementById("r4").innerHTML = localStorage.getItem("dob");
+            document.getElementById("r5").innerHTML = localStorage.getItem("gender");
+            document.getElementById("r6").innerHTML = localStorage.getItem("status");
+            document.getElementById("r7").innerHTML = localStorage.getItem("phone");
+            document.getElementById("r8").innerHTML = localStorage.getItem("addict");
+        </script>
   </body>
 </html>

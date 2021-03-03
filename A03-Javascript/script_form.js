@@ -46,40 +46,66 @@ function myNuminvalid(){
 
 function mySubmit(){
     var name = document.getElementById("name").value;
-    document.getElementById("r1").innerHTML = name;
+    localStorage.setItem("name", name);
 
     var addr = document.getElementById("address").value;
-    document.getElementById("r2").innerHTML = addr;
+    localStorage.setItem("address", addr);
 
     var age = document.getElementById("age").value;
-    document.getElementById("r3").innerHTML = age;
+    localStorage.setItem("age", age);
 
     var dob = document.getElementById("dob").value;
-    document.getElementById("r4").innerHTML = dob;
+    localStorage.setItem("dob", dob);
 
 
     var ele = document.getElementsByName('gender'); 
     for(i = 0; i < ele.length; i++) { 
         if(ele[i].checked) 
-            document.getElementById("r5").innerHTML = ele[i].value;
+            localStorage.setItem("gender", ele[i].value);
     } 
 
     var status = document.getElementById("status").value;
-    document.getElementById("r6").innerHTML = status;
+    localStorage.setItem("status", status);
 
     var phone = document.getElementById("phone").value;
-    document.getElementById("r7").innerHTML = phone;
+    localStorage.setItem("phone", phone);
 
     var addict = document.getElementById("addict").value;
-    document.getElementById("r8").innerHTML = addict;
+    localStorage.setItem("addict", addict);
 
-    document.getElementById("submission").style.display = "block";
-    location.href="#submission";
     //location.target = "_blank";
-   //window.open(document.getElementById("submission"), "_blank");
+    window.open("details.html", "_blank");
 }
 
 function myReset(){
-    document.getElementById("submission").style.display = "none";
     document.getElementById("regform").reset();
 }
+
+function showTime() { 
+    let time = new Date(); 
+    let hour = time.getHours(); 
+    let min = time.getMinutes(); 
+    let sec = time.getSeconds(); 
+    am_pm = "AM"; 
+
+    if (hour > 12) { 
+        hour -= 12; 
+        am_pm = "PM"; 
+    } 
+    if (hour == 0) { 
+        hr = 12; 
+        am_pm = "AM"; 
+    } 
+
+    hour = hour < 10 ? "0" + hour : hour; 
+    min = min < 10 ? "0" + min : min; 
+    sec = sec < 10 ? "0" + sec : sec; 
+
+    let currentTime = hour + ":"  
+        + min + ":" + sec + am_pm; 
+
+    document.getElementById("clock") 
+        .innerHTML = currentTime; 
+} 
+
+window.onload = showTime();
