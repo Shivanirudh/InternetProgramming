@@ -54,12 +54,14 @@
                     </tr>
                     <tr>
                     <td><label for="addict">Addiction: </label></td>
-                    <td><select id="addict">
-                        <option value="none"></option>
-                        <option value="tobacco">Tobacco</option>
-                        <option value="alcohol">Alcohol</option>
-                        <option value="drugs">Drugs</option>
-                    </select></td>
+                    <td>
+                        <div id="addict" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                        <span class="options">
+                            <p id="tobacco" draggable="true" ondragstart="drag(event)">Tobacco</p>
+                            <p id="alcohol" draggable="true" ondragstart="drag(event)">Alcohol</p>
+                            <p id="drugs" draggable="true" ondragstart="drag(event)">Drugs</p>
+                            </span>
+                    </td>
                     </tr>
                     <tr>
                     <td><a href="#submission"><input type="button" value="Submit" id="submit" onclick="mySubmit()"></a></td>
