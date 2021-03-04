@@ -6,7 +6,29 @@
     <link rel="stylesheet" href="style_game.css">    
   </head>
   <body>
-      
+      <h1 class="heading">Memory Matching</h1>
+      <form>
+        <label for="level">Choose difficulty: </label>
+        <select id="level">
+          <option value="Normal">Noob</option>
+          <option value="Easy">Amateur</option>
+          <option value="Pro">Master</option>
+        </select>
+      </form>
+      <input type="button" value="Start Game" id="start">
+
+      <div class="game" id="game">
+        <table>
+          <tr>
+          <td id="timer">
+
+          </td>
+          <td class="score">
+            Score: 0000
+          </td>
+        </tr>
+        </table>
+      </div>
       <script src="script_game.js"></script>
   </body>
 </html> 
