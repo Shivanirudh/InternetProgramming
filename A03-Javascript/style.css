@@ -1,0 +1,71 @@
+body {
+    font-size: 16pt;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    background: rgb(155,32,11);
+    background: linear-gradient(27deg, rgba(155,32,11,1) 12%, rgba(9,41,121,1) 62%, rgba(0,255,149,1) 91%); 
+    color: white;
+    height: 100vh;
+}
+h1 {
+    font-size: 50pt;
+    text-transform: uppercase;
+    text-align:center;
+}
+
+h2 {
+    text-align: center;
+    font-size: 40pt;
+}
+
+h3 {
+    text-align: center;
+    font-size: 30pt;
+}
+
+.form{
+    float: left;
+    width: 40%;
+    border: 2px solid white;
+    margin: 3rem;
+    text-align: center;
+}
+
+.form a{
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+}
+
+.form img{
+    padding: 2rem;
+    filter:invert(100%);
+}
+
+.form:hover p{
+    font-size: 20pt;
+}
+
+.game img{
+    padding: 2rem;
+    filter:invert(100%);
+}
+
+.game a{
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+}
+
+.game{
+    float: right;
+    width: 40%;
+    border: 2px solid white;
+    margin: 3rem;
+    text-align: center;
+}
+
+.game:hover p{
+    font-size: 20pt;
+}
