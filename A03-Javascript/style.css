@@ -54,6 +54,10 @@ h3 {
     font-size: 20pt;
 }
 
+.form:hover img{
+    animation: effect 2s linear infinite;
+}
+
 .game img{
     padding: 2rem;
     filter:invert(100%);
@@ -82,16 +86,42 @@ h3 {
     font-size: 20pt;
 }
 
+.game:hover img{
+    animation: effect 2s linear infinite;
+}
+
 
 @keyframes effect { 
     0% { 
-        background: radial-gradient( 
-                #a52323, #875117); 
-        -webkit-background-clip: text; 
+        transform: rotate3d(0, 1, 0, 0deg); 
+    }
+    10% {
+        transform: rotate3d(0, 1, 0, 36deg);
     } 
-
+    20% {
+        transform: rotate3d(0, 1, 0, 72deg);
+    }
+    30% {
+        transform: rotate3d(0, 1, 0, 108deg);
+    }
+    40% {
+        transform: rotate3d(0, 1, 0, 144deg);
+    }
+    50% {
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
+    60% {
+        transform: rotate3d(0, 1, 0, 216deg);
+    }
+    70% {
+        transform: rotate3d(0, 1, 0, 252deg);
+    }
+    80% {
+        transform: rotate3d(0, 1, 0, 288deg);
+    }
+    90% {
+        transform: rotate3d(0, 1, 0, 324deg);
+    }
     100% { 
-        background: radial-gradient( 
-                #3CE7D7, #000FFF); 
-        -webkit-background-clip: text; 
+        transform: rotate3d(0, 1, 0, 360deg);
     } 

@@ -1,8 +1,3 @@
-function validateName(){
-
-}
-
-
 function myFocus(){
     document.getElementById("name").style.backgroundColor="#6bb8d8";
 }
@@ -44,44 +39,73 @@ function myNuminvalid(){
     }
 }
 
-function mySubmit(){
+function validateName(){
     var name = document.getElementById("name").value;
-    localStorage.setItem("name", name);
+    if(name == " || name == null"){
+        window.alert("Enter Name");
+        return false;
+    }
+    return true;
+}
 
-    var addr = document.getElementById("address").value;
-    localStorage.setItem("address", addr);
-
+function validateAge(){
     var age = document.getElementById("age").value;
-    localStorage.setItem("age", age);
+    if(isNaN(age)){
+        window.alert("Enter Numerical values only");
+        return false;
+    }
+    return true;
+}
 
-    var dob = document.getElementById("dob").value;
-    localStorage.setItem("dob", dob);
+function validatePhone(){
+    var num = document.getElementById("phone").value;
+    if(isNaN(num)){
+        window.alert("Enter Numerical values only");
+        return false;
+    }
+    return true;
+}
+
+function mySubmit(){
+    if(validateName() && validateAge() && validatePhone()){
+        var name = document.getElementById("name").value;
+        localStorage.setItem("name", name);
+
+        var addr = document.getElementById("address").value;
+        localStorage.setItem("address", addr);
+
+        var age = document.getElementById("age").value;
+        localStorage.setItem("age", age);
+
+        var dob = document.getElementById("dob").value;
+        localStorage.setItem("dob", dob);
 
 
-    var ele = document.getElementsByName('gender'); 
-    for(i = 0; i < ele.length; i++) { 
-        if(ele[i].checked) 
-            localStorage.setItem("gender", ele[i].value);
-    } 
+        var ele = document.getElementsByName('gender'); 
+        for(i = 0; i < ele.length; i++) { 
+            if(ele[i].checked) 
+                localStorage.setItem("gender", ele[i].value);
+        } 
 
-    var status = document.getElementById("status").value;
-    localStorage.setItem("status", status);
+        var status = document.getElementById("status").value;
+        localStorage.setItem("status", status);
 
-    var phone = document.getElementById("phone").value;
-    localStorage.setItem("phone", phone);
+        var phone = document.getElementById("phone").value;
+        localStorage.setItem("phone", phone);
 
-    var addict = document.getElementById("addict").value;
-    localStorage.setItem("addict", addict);
+        var addict = document.getElementById("addict").value;
+        localStorage.setItem("addict", addict);
 
-    //location.target = "_blank";
-    window.open("details.html", "_blank");
+        //location.target = "_blank";
+        window.open("details.html", "_blank");
+    }
 }
 
 function myReset(){
     document.getElementById("regform").reset();
 }
 
-function showTime() { 
+var x = setInterval(function() { 
     let time = new Date(); 
     let hour = time.getHours(); 
     let min = time.getMinutes(); 
@@ -106,9 +130,7 @@ function showTime() {
 
     document.getElementById("clock") 
         .innerHTML = currentTime; 
-} 
-
-window.onload = showTime();
+}, 1000); 
 
 function allowDrop(ev) {
     ev.preventDefault();
