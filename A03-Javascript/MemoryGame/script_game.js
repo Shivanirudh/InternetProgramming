@@ -2,12 +2,12 @@ document.getElementById("start").addEventListener("click", function(){
     document.getElementById("game").style.display = "block";
     var level = document.getElementById("level").value;
     if (level == "Normal"){
-        var countDown = 30;
+        var countDown = 120;
     }
     else if (level == "Easy") {
-        var countDown = 20;
+        var countDown = 90;
     } else {
-        var countDown = 15;
+        var countDown = 60;
     }
     
     var x = setInterval(function() {
