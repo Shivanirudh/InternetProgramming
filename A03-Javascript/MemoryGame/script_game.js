@@ -52,6 +52,7 @@ imgArray[19].src = 'Pics/zuko.jpg';
 var score;
 let openedCards = [];
 let matchedCards =  [];
+var flip = false;
 
 function shuffleArray(array) {  
     return array.sort( ()=>Math.random()-0.5 ); 
@@ -60,7 +61,6 @@ function shuffleArray(array) {
 var cells = document.getElementsByClassName("grid-item");
 var cellsArray = [...cells];
 var imgArray1 = shuffleArray(imgArray);
-
 
 document.getElementById("start").addEventListener("click", function(){
     document.getElementById("game").style.display = "block";
@@ -76,9 +76,14 @@ document.getElementById("start").addEventListener("click", function(){
     var i;
     for(i = 0; i < 20; i++){
         var id = "item" + (i+1).toString();
+        var idb = id + "-b";
         document.getElementById(id).src='Pics/logo.jpg';
         document.getElementById(id).style.height="100px";
         document.getElementById(id).style.width="100px";
+        document.getElementById(idb).src=imgArray1[i].src;
+        document.getElementById(idb).style.height="100px";
+        document.getElementById(idb).style.width="100px";
+        document.getElementById(idb).style.display = "none";
     }
 
     score = 0;
@@ -101,20 +106,46 @@ document.getElementById("start").addEventListener("click", function(){
     location.href = "#game";
 });
 
-for(var i = 0; i < cellsArray.length;i++){
-    cellsArray[i].addEventListener("click", function(){
-        var id = "item" + (i+1).toString();
-        var pic = document.getElementById(id).src;
-        if(pic === 'Pics/logo.jpg'){
-            pic = imgArray1[i].src;
-        }
-        else{
-            pic = 'Pics/logo.jpg';
-        }
-        document.getElementById(id).src = pic;
+function setImg(){
+    
+    if(this === openedCards[0]){
+        return;
     }
-    );
+    this.classList.add("flip");
+    if(!hasFlippedCard){
+        hasFlippedCard = true;
+        openedCards[0] = this;
+        return;
+    }
+    openedCards[1] = this;
+    if(openedCards[0].src === openedCards[1].src){
+        matched();
+    }
+    else{
+        unmatched();
+    }
 }
+
+function matched() {
+    openedCards[0].classList.add("match");
+    openedCards[1].classList.add("match");
+    openedCards[0].classList.remove("show", "open");
+    openedCards[1].classList.remove("show", "open");
+    matchedCards.push(openedCards[0]);
+    matchedCards.push(openedCards[1]);
+    openedCards = [];
+    if(matchedCards.length == 20) {
+        endGame();
+    }
+}
+
+
+for(var i = 0; i < cellsArray.length;i++){
+    cellsArray[i].addEventListener("click", setImg);
+}
+
+
+
 
 
 /*
@@ -149,18 +180,7 @@ function cardOpen(card) {
     }
 }
 
-function matched() {
-    openedCards[0].classList.add("match");
-    openedCards[1].classList.add("match");
-    openedCards[0].classList.remove("show", "open");
-    openedCards[1].classList.remove("show", "open");
-    matchedCards.push(openedCards[0]);
-    matchedCards.push(openedCards[1]);
-    openedCards = [];
-    if(matchedCards.length == 20) {
-        endGame();
-    }
-}
+
 
 function unmatched() {
     openedCards[0].classList.add("unmatched");
