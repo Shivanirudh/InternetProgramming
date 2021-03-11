@@ -46,15 +46,23 @@ form{
 
 
 .grid-container{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-gap: 50px;
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
 }
 
 .grid-item{
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    margin: 5px;
+    position: relative;
     transform: scale(1);
     transform-style: preserve-3d;
-    transition: transform 0.5s;
+    transition: transform .5s;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
 }
 
 .grid-item:active {
@@ -63,16 +71,18 @@ form{
 }
 
 .grid-item.flip{
-    transform: rotate3d(0, 1, 0, 180deg);
+    transform: rotateY(180deg);
 }
 
-.front .back {
+.front,.back {
     width: 100%;
     height: 100%;
     padding: 20px;
     border-radius: 5px;
-    background: #1c7ccc;
-    background: #adefd1ff;
     position: absolute;
     backface-visibility: hidden;
 }
+
+.front{
+    transform: rotateY(180deg);
+  }
