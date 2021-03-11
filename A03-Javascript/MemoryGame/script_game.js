@@ -112,13 +112,16 @@ function setImg(){
         return;
     }
     this.classList.add("flip");
-    if(!hasFlippedCard){
-        hasFlippedCard = true;
+    this.children[0].style.visibility = "hidden";
+    this.children[1].style.display = "block";
+    this.children[1].style.visibility = "visible";
+    if(!flip){
+        flip = true;
         openedCards[0] = this;
         return;
     }
     openedCards[1] = this;
-    if(openedCards[0].src === openedCards[1].src){
+    if(openedCards[0].children[1].src === openedCards[1].children[1].src){
         matched();
     }
     else{
@@ -127,26 +130,75 @@ function setImg(){
 }
 
 function matched() {
-    openedCards[0].classList.add("match");
-    openedCards[1].classList.add("match");
-    openedCards[0].classList.remove("show", "open");
-    openedCards[1].classList.remove("show", "open");
+    function disableCards(){
+        //Disables the chosen cards
+    
+        openedCards[0].removeEventListener("click", setImg);
+        openedCards[1].removeEventListener("click", setImg);
+    
+        openedCards[0].style.setProperty("visibility", "hidden");
+        openedCards[1].style.setProperty("visibility", "hidden");
+    
+        resetBoard();
+    }
     matchedCards.push(openedCards[0]);
     matchedCards.push(openedCards[1]);
+    score += 1;
+    updateScore();
     openedCards = [];
     if(matchedCards.length == 20) {
         endGame();
     }
 }
 
+function unmatched() {
+    openedCards[0].classList.remove("flip");
+    openedCards[1].classList.remove("flip");
+
+    openedCards[0].classList.add("unmatched");
+    openedCards[1].classList.add("unmatched");
+
+    openedCards[0].children[0].style.setProperty("visibility", "visible");
+    openedCards[0].children[1].style.setProperty("visibility", "hidden");
+    openedCards[1].children[0].style.setProperty("visibility", "visible");
+    openedCards[1].children[1].style.setProperty("visibility", "hidden");
+    disable();
+    setTimeout(function() {
+        openedCards[0].classList.remove("unmatched");
+        openedCards[1].classList.remove("unmatched");
+        enable();
+        openedCards = [];
+    }, 1000)
+}
+
+function updateScore(){
+    document.getElementById("score").innerText = "Score:" + score.toString();
+}
 
 for(var i = 0; i < cellsArray.length;i++){
     cellsArray[i].addEventListener("click", setImg);
 }
 
+function endGame(){
+    window.alert("Game over. Your score is: "+ score.toString());
+    document.getElementById("game").style.display="none";
+    location.href = "#level";
+}
 
+function disable() {
+    cellsArray.filter((cell, i, cellsArray) => {
+        cell.classList.add('disabled');
+    })
+}
 
-
+function enable() {
+    cellsArray.filter((cell, i, cellsArray) => {
+        cell.classList.remove('disabled');
+        for(let i=0; i<matchedCards.length; i++) {
+            matchedCards[i].classList.add('disabled');
+        }
+    })
+}
 
 /*
 function flashCards() {
@@ -180,41 +232,4 @@ function cardOpen(card) {
     }
 }
 
-
-
-function unmatched() {
-    openedCards[0].classList.add("unmatched");
-    openedCards[1].classList.add("unmatched");
-    disable();
-    setTimeout(function() {
-        openedCards[0].classList.remove("show", "open", "unmatched");
-        openedCards[1].classList.remove("show", "open", "unmatched");
-        openedCards[0].children[0].classList.remove('show-img');
-        openedCards[1].children[0].classList.remove('show-img');
-        enable();
-        openedCards = [];
-        
-    }, 1100)
-}
-
-function disable() {
-    cellsArray.filter((cell, i, cellsArray) => {
-        cell.classList.add('disabled');
-    })
-}
-
-function enable() {
-    cellsArray.filter((cell, i, cellsArray) => {
-        cell.classList.remove('disabled');
-        for(let i=0; i<matchedCards.length; i++) {
-            matchedCards[i].classList.add('disabled');
-        }
-    })
-}
-
-function endGame(){
-    window.alert("Game over. Your score is: "+${score});
-    document.getElementById("game").style.display="none";
-    location.href = "#level";
-}
 */

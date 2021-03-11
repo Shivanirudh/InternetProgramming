@@ -50,3 +50,22 @@ form{
     grid-template-columns: auto auto auto auto;
     grid-gap: 50px;
 }
+
+.grid-item{
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.grid-item.flip{
+    transform: rotate3d(0, 1, 0, 180deg);
+}
+
+.grid-item.unmatched{
+    transform: rotate3d(0, 1, 0, -180deg);
+}
+
+.grid-item.disabled{
+    pointer-events: none;
+	opacity: 0.9;
+}
