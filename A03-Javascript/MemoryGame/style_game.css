@@ -57,15 +57,22 @@ form{
     transition: transform 0.5s;
 }
 
+.grid-item:active {
+    transform: scale(0.97);
+    transition: transform 0.2s;
+}
+
 .grid-item.flip{
     transform: rotate3d(0, 1, 0, 180deg);
 }
 
-.grid-item.unmatched{
-    transform: rotate3d(0, 1, 0, -180deg);
-}
-
-.grid-item.disabled{
-    pointer-events: none;
-	opacity: 0.9;
+.front .back {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    background: #1c7ccc;
+    background: #adefd1ff;
+    position: absolute;
+    backface-visibility: hidden;
 }
