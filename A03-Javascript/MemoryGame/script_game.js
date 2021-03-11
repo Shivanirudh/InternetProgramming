@@ -35,7 +35,7 @@ document.getElementById("start").addEventListener("click", function(){
         clearInterval(x);
         window.alert("TIME UP\n Your score is: " + score.toString());
         document.getElementById("game").style.display="none";
-        location.href = "#level";
+        location.reload();
         }
     }, 1000);
 
@@ -75,6 +75,10 @@ function showCard(){
 function updateScore(){
     score++;
     document.getElementById("score").innerText = "Score:" + score.toString();
+    if(score == 10){
+        window.alert("Congratulations! You won!!");
+        location.reload();
+    }
 }
 
 function disableCards(){
