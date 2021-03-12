@@ -1,5 +1,4 @@
 import java.io.*;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 
