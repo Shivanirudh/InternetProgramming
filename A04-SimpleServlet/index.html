@@ -10,38 +10,38 @@
 	<h1>Employee Registration</h1>
 	<hr><br>
     <table>
-        <form name="regform" id="regform" action="/employee/Servlet" method="GET">
+        <form name="regform" id="regform" action="http://localhost:8080/employee/Servlet">
             <tr>
                 <td><label for="id">Employee ID: </label></td>
-                <td><input id="id" type="number" required></td>
+                <td><input id="id" name="id" type="number" required></td>
             </tr>
             <tr>
                 <td><label for="name">Employee Name: </label></td>
-                <td><input id="name" type="text" required></td>
+                <td><input id="name" name="name" type="text" required></td>
             </tr>
             <tr>
                 <td><label for="designation">Designation: </label></td>
-                <td><input id="designation" type="text" required></td>
+                <td><input id="designation" name="designation" type="text" required></td>
             </tr>
             <tr>
                 <td><label for="dept">Department: </label></td>
-                <td><input id="dept" type="text" required></td>
+                <td><input id="dept" name="dept" type="text" required></td>
             </tr>
             <tr>
                 <td><label for="salary">Basic Salary: </label></td>
-                <td><input id="salary" type="number" required></td>
+                <td><input id="salary" name="salary" type="number" required></td>
             </tr>
             <tr>
                 <td><label for="phone">Contact number: </label></td>
-                <td><input id="phone" type="tel" pattern="##### #####" oninvalid="myNuminvalid()" required></td>
+                <td><input id="phone" name="phone" type="tel" pattern="##### #####" oninvalid="myNuminvalid()" required></td>
             </tr>
             <tr>
                 <td><label for="address">Address: </label></td>
-                <td><textarea id="address" required>Enter full address</textarea></td>
+                <td><textarea id="address" name="address" required>Enter full address</textarea></td>
             </tr>
             <tr>
                 <td><label for="dob">Date of Birth: </label></td>
-                <td><input id="dob" type="date" placeholder="dd/mm/yyyy"></td>
+                <td><input id="dob" name="dob" type="date" placeholder="dd/mm/yyyy"></td>
             </tr>
             <tr>
             <td><label >Gender: </label></td>
@@ -59,7 +59,7 @@
                 </select></td>
             </tr>
             <tr>
-                <td><a href="#submission"><input type="button" value="Submit" id="submit" onclick="mySubmit()"></a></td>
+                <td><button type="submit" value="Submit" id="submit"></td>
                 <td><input type="button" value="Reset" id="resetBtn" onclick="myReset()"></td>
             </tr>
         </form>
