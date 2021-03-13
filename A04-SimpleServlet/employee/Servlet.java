@@ -16,7 +16,6 @@ public class Servlet extends HttpServlet{
                 String address = request.getParameter("address").trim();
                 String dob = request.getParameter("dob").trim();
                 
-        out.println("<h1>"+id+"</h1>");
 		out.println("<html>");
 		out.println("<head><title>Details Obtained</title></head>");
 		out.println("<body style='background-color: black; color:white'><h1 style='text-align: center;'>Employee Details</h1>");
