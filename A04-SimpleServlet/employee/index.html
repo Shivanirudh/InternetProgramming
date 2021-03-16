@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Simple Servlet Program</title>
+	<title>Employee Registration</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="styles.css">
 </head>
@@ -21,11 +21,27 @@
             </tr>
             <tr>
                 <td><label for="designation">Designation: </label></td>
-                <td><input name="designation" id="designation" type="text" required></td>
+                <td><select name="designation" id="designation" required>
+                    <option value="none"></option>
+                    <option value="RA">Research Assistant</option>
+                    <option value="TA">Teaching Assistant</option>
+                    <option value="AP">Associate Professor</option>
+                    <option value="Prof">Professor</option>
+                </select></td>
             </tr>
             <tr>
                 <td><label for="dept">Department: </label></td>
-                <td><input name="dept" id="dept" type="text" required></td>
+                <td><select name="dept" id="dept">
+                    <option value="none"></option>
+                    <option value="CSE">CSE</option>
+                    <option value="IT">IT</option>
+                    <option value="ECE">ECE</option>
+                    <option value="Mech">Mech</option>
+                    <option value="Chem">Chem</option>
+                    <option value="BME">BME</option>
+                    <option value="EEE">EEE</option>
+                    <option value="Civil">Civil</option>
+                </select></td>
             </tr>
             <tr>
                 <td><label for="salary">Basic Salary: </label></td>
@@ -64,5 +80,6 @@
             </tr>
         </form>
     </table>
+    <script src="script.js"></script>
 </body>
 </html>
