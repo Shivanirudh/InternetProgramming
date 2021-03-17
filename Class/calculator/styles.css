@@ -1,0 +1,22 @@
+body{
+    font-size: 16pt;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    background-color: black;
+    color: white;
+}
+
+h1{
+    font-size: 50pt;
+    text-align: center;
+}
+
+table {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
