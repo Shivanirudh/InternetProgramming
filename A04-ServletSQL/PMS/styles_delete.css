@@ -4,7 +4,7 @@ body{
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     background: rgb(10,11,41);
-    background: radial-gradient(circle, rgba(10,11,41,1) 12%, rgba(11,49,13,1) 69%); 
+    background: linear-gradient(135deg, rgba(10,11,41,1) 40%, rgba(11,49,13,1) 60%); 
     color: white;
     height: 100vh;
 }
@@ -16,11 +16,8 @@ h1{
 }
 
 table{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
+    width: 100%;
 	text-align: center;
-    border-spacing: 25px;
+    border-spacing: 15px;
 }
 

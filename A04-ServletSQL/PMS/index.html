@@ -1,85 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Employee Registration</title>
+	<title>Patient Management System</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-	<h1>Employee Registration</h1>
+	<h1>Patient Management System</h1>
 	<hr><br>
     <table>
-        <form name="regform" id="regform" action="http://localhost:8080/employee/Servlet" >
+        <form id="loginform">
             <tr>
-                <td><label for="id">Employee ID: </label></td>
-                <td><input name="id" id="id" type="number" required></td>
+                <td><label for="username">Username: </label></td>
+                <td><input name="username" id="username" type="text" required></td>
             </tr>
             <tr>
-                <td><label for="name">Employee Name: </label></td>
-                <td><input name="name" id="name" type="text" required></td>
+                <td><label for="password">Password: </label></td>
+                <td><input name="password" id="password" type="password" required></td>
             </tr>
             <tr>
-                <td><label for="designation">Designation: </label></td>
-                <td><select name="designation" id="designation" required>
-                    <option value="none"></option>
-                    <option value="RA">Research Assistant</option>
-                    <option value="TA">Teaching Assistant</option>
-                    <option value="AP">Associate Professor</option>
-                    <option value="Prof">Professor</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td><label for="dept">Department: </label></td>
-                <td><select name="dept" id="dept">
-                    <option value="none"></option>
-                    <option value="CSE">CSE</option>
-                    <option value="IT">IT</option>
-                    <option value="ECE">ECE</option>
-                    <option value="Mech">Mech</option>
-                    <option value="Chem">Chem</option>
-                    <option value="BME">BME</option>
-                    <option value="EEE">EEE</option>
-                    <option value="Civil">Civil</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td><label for="salary">Basic Salary: </label></td>
-                <td><input name="salary" id="salary" type="number" required></td>
-            </tr>
-            <tr>
-                <td><label for="phone">Contact number: </label></td>
-                <td><input name="phone" id="phone" type="tel"  required></td>
-            </tr>
-            <tr>
-                <td><label for="address">Address: </label></td>
-                <td><textarea name="address" id="address" required>Enter full address</textarea></td>
-            </tr>
-            <tr>
-                <td><label for="dob">Date of Birth: </label></td>
-                <td><input name="dob" id="dob" type="date" placeholder="dd/mm/yyyy"></td>
-            </tr>
-            <tr>
-            <td><label >Gender: </label></td>
-                <td><input id="male" type="radio" value="Male" name="gender"><label for="male">Male</label>
-                <input id="female" type="radio" value="Female" name="gender"><label for="female">Female</label>
-                <input id="other" type="radio" value="Other" name="gender"><label for="other">Other</label>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="status">Marital Status: </label></td>
-                <td><select name="status" id="status">
-                    <option value="none"></option>
-                    <option value="Married">Married</option>
-                    <option value="single">Single</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Submit" id="submit" ></td>
+                <td><input type="submit" value="Submit" id="submit" onclick="checkCreds()"></td>
                 <td><input type="button" value="Reset" id="resetBtn" onclick="myReset()"></td>
             </tr>
         </form>
     </table>
-    <script src="script.js"></script>
+    <script>
+        function myReset(){
+            document.getElementById("loginform").reset();
+        }
+
+        function checkCreds(){
+            var user = document.getElementById("username").value;
+            var pass = document.getElementById("password").value;
+
+            if(user === "admin" && pass === "12345"){
+                document.getElementById("username").value = "";
+                document.getElementById("password").value = "";
+                window.open("homepage.html");
+            }
+            else{
+                alert("Invalid credentials. Please re-enter");
+                document.getElementById("username").value = "";
+                document.getElementById("password").value = "";
+                document.getElementById("username").focus();
+            }
+        }
+    </script>
 </body>
-</html>
