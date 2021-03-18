@@ -1,5 +1,4 @@
 import java.io.*;
-import javax.servlet.ServletException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -12,21 +11,24 @@ public class Session extends HttpServlet{
 		throws ServletException, IOException{
 			response.setContentType("text/html;");
 			try{
+				int count;
 				PrintWriter out = response.getWriter();
-				HttpSession session = request.getSession(true);
+				HttpSession session = request.getSession();
 
-				String uname= request.getParameter("username");
-				String alive_id = session.getId();
-				
-				out.println("<!DOCTYPE html>");
-				out.println("<html>");
-				out.println("<head><title>Details Obtained</title></head>");
-				out.println("<body style='background-color: azure;'><h1 style='text-align: center;'>User Details</h1>");
-				out.println("<table align='center' style='border: 2px solid black; font-size: 25px;'><tr><th>Name</th><td>" + uname + "</td></tr><tr><th>Email</th><td>" + email + "</td></tr></table>");
-				out.println("</body></html>");
+				session.setMaxInactiveInterval(10);
+				if(session.getAttribute("count") != null){
+					count = (int)session.getAttribute("count");
+				}
+				else{
+					count = 0;
+				}
+				count++;
+				session.setAttribute("count", count);
+				out.println("Session ID: "+session.getId()+"<br>");
+				out.println("Count: "+count);
 			} 
-			finally{
-				out.close();
+			catch(Exception e){
+				System.out.println(e);
 			}
 
 		}

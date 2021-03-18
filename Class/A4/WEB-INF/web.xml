@@ -1,12 +1,12 @@
 <web-app>
 	<servlet>
-		<servlet-name>Register</servlet-name>
-		<servlet-class>Register</servlet-class>
+		<servlet-name>Session</servlet-name>
+		<servlet-class>Session</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>Register</servlet-name>
-		<url-pattern>/servlet/Register</url-pattern>
+		<servlet-name>Session</servlet-name>
+		<url-pattern>/Session</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
