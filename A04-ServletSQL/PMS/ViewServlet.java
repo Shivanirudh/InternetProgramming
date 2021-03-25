@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
 
-public class ViewServlet {
+public class ViewServlet extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -24,6 +24,10 @@ public class ViewServlet {
 			Statement pst = conn.createStatement();
 
             ResultSet rs = pst.executeQuery(sql);
+            out.println("<!DOCTYPE html>");
+            out.println("<html><head></head><body style='font-size:15pt'>");
+            out.println("<table style='border-spacing:50px'>");
+            out.println("<tr><th>Name</th><th>Age</th><th>ID</th><th>Gender</th><th>Address</th><th>Marital Status</th><th>Date of visit</th></tr>");
             while (rs.next()) {
                 response.setContentType("text/html");
                 int id = rs.getInt("id");
@@ -34,19 +38,12 @@ public class ViewServlet {
                 String status = rs.getString("marital_status");
                 String dov = rs.getString("date_of_visit");
 
-                out.println("Name:" + name + "<br>");
-                out.println("ID:" + id + "<br>");
-                out.println("Age:" + age + "<br>");
-                out.println("Gender:" + gender + "<br>");
-                out.println("Address:" + addr + "<br>");
-                out.println("Marital Status:" + status + "<br>");
-                out.println("Date of visit:" + dov + "<br>");
-                out.println("<br><br>");
+                out.println("<tr><td>" + name + "</td><td>" + age + "</td><td>" + id + "</td><td>" + gender
+                        + "</td><td>" + addr + "</td><td>" + status + "</td><td>" + dov + "</td></tr>");
             }
             
 			pst.close();
-			conn.close();
-            response.sendRedirect("http://localhost:8080/PMS/ViewServlet");
+            conn.close();
             
 			
 		} catch (SQLException sql) {

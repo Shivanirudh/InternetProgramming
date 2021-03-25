@@ -47,6 +47,7 @@
 %Assignment name
 \section*{\center{\textbf{Ex 04: Java Servlets and MySQL}}}
 
+\section*{Java Servlets}
 %Objective
 \subsection*{\flushleft{Objective:}}
 \begin{flushleft}
@@ -99,14 +100,215 @@
 \end{figure}
 
 \hrule
+\newpage
 
+\section*{Patient Management System (PMS)}
+\subsection*{\flushleft{Objective:}}
+\begin{flushleft}
+    Develop  a  Patient  Management  System (PMS) in  a  Hospital  that  maintains  the patient records.
+\end{flushleft}
+
+%Code
+\subsection*{\flushleft{Code:}}
+\subsubsection*{\flushleft{Login Page}}
+\subsubsection*{\flushleft{HTML:}}
+\begin{flushleft}
+\lstinputlisting[language = HTML]{PMS/index.html}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Stylesheet:}}}
+\begin{flushleft}
+    \lstinputlisting[language = HTML]{PMS/styles.css}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Script file:}}}
+\begin{flushleft}
+    \lstinputlisting[language = HTML]{PMS/script.js}
+\end{flushleft}
+
+\subsubsection*{\flushleft{Home Page}}
+\subsubsection*{\flushleft{HTML:}}
+\begin{flushleft}
+\lstinputlisting[language = HTML]{PMS/homepage.html}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Stylesheet:}}}
+\begin{flushleft}
+    \lstinputlisting[language = HTML]{PMS/styles_home.css}
+\end{flushleft}
+
+\subsubsection*{\flushleft{Add Page}}
+\subsubsection*{\flushleft{HTML:}}
+\begin{flushleft}
+\lstinputlisting[language = HTML]{PMS/add.html}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Stylesheet:}}}
+\begin{flushleft}
+    \lstinputlisting[language = HTML]{PMS/styles_add.css}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Java file:}}}
+\begin{flushleft}
+    \lstinputlisting[language = Java]{PMS/AddServlet.java}
+\end{flushleft}
+
+\subsubsection*{\flushleft{Update Page}}
+\subsubsection*{\flushleft{HTML:}}
+\begin{flushleft}
+\lstinputlisting[language = HTML]{PMS/update.html}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Stylesheet:}}}
+\begin{flushleft}
+    \lstinputlisting[language = HTML]{PMS/styles_update.css}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Java file:}}}
+\begin{flushleft}
+    \lstinputlisting[language = Java]{PMS/UpdateServlet.java}
+\end{flushleft}
+
+\subsubsection*{\flushleft{Delete Page}}
+\subsubsection*{\flushleft{HTML:}}
+\begin{flushleft}
+\lstinputlisting[language = HTML]{PMS/delete.html}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Stylesheet:}}}
+\begin{flushleft}
+    \lstinputlisting[language = HTML]{PMS/styles_delete.css}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Java file:}}}
+\begin{flushleft}
+    \lstinputlisting[language = Java]{PMS/DeleteServlet.java}
+\end{flushleft}
+
+\subsubsection*{\flushleft{View Page}}
+\subsubsection*{\flushleft{HTML:}}
+\begin{flushleft}
+\lstinputlisting[language = HTML]{PMS/view.html}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Stylesheet:}}}
+\begin{flushleft}
+    \lstinputlisting[language = HTML]{PMS/styles_view.css}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Java file:}}}
+\begin{flushleft}
+    \lstinputlisting[language = Java]{PMS/ViewServlet.java}
+\end{flushleft}
+
+\subsubsection*{\flushleft{Search Page}}
+\subsubsection*{\flushleft{HTML:}}
+\begin{flushleft}
+\lstinputlisting[language = HTML]{PMS/search.html}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Stylesheet:}}}
+\begin{flushleft}
+    \lstinputlisting[language = HTML]{PMS/styles_search.css}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{Java file:}}}
+\begin{flushleft}
+    \lstinputlisting[language = Java]{PMS/SearchServlet.java}
+\end{flushleft}
+
+\subsubsection*{{\flushleft{XML file:}}}
+\begin{flushleft}
+    \lstinputlisting[language = XML]{PMS/WEB-INF/web.xml}
+\end{flushleft}
+
+\newpage
+%Output
+\subsection*{\flushleft{Output:}}
+\subsubsection*{\flushleft{Login Page:}}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/login.png}
+\end{figure}
+
+\subsubsection*{\flushleft{Home Page:}}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/home.png}
+\end{figure}
+\newpage
+\subsubsection*{\flushleft{Add Page:}}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/add1.png}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/add2.png}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/add3.png}
+\end{figure}
+\newpage
+\subsubsection*{\flushleft{Update Page:}}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/update1.png}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/update2.png}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/update3.png}
+\end{figure}
+\newpage
+\subsubsection*{\flushleft{Delete Page:}}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/delete1.png}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/delete2.png}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/delete3.png}
+\end{figure}
+\newpage
+\subsubsection*{\flushleft{View Page:}}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/view1.png}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/view2.png}
+\end{figure}
+\newpage
+\subsubsection*{\flushleft{Search Page:}}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/search1.png}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \textwidth]{Pics/search2.png}
+\end{figure}
+
+
+\newpage
+\hrule
 \subsection*{\flushleft{Learning Outcomes:}}
 \renewcommand{\labelitemi}{$\textendash$}
 \begin{itemize}
-    \item Learnt to build a servlet with Apache Tomcat and Java.
-    \item Learnt to use servlets to control behaviour of forms.
-    \item Learnt to use \textbf{action} tag for loading servlet.
-    \item Learnt the different types of getting info from HTML forms in Java.
+    \item Learnt to build a servlet with Apache Tomcat, Java and JDBC for MySQL.
+    \item Learnt to use servlets to control behaviour of forms and updating databases.
+    \item Learnt to use \textbf{action} tag for loading servlets.
+    \item Learnt the different types of getting info from HTML forms in Java and inserting/deleting/modifying them in databases.
     \item Learnt to use styling, and behaviour of HTML items in Java.
 \end{itemize}
 \hrule

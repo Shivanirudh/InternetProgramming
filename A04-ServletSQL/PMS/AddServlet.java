@@ -40,7 +40,11 @@ public class AddServlet extends HttpServlet {
 			pst.executeUpdate();
 			pst.close();
 			conn.close();
-			response.sendRedirect("http://localhost:8080/PMS/ViewServlet");
+			
+			out.println("<B> Record added successfully</B><br>");
+
+			RequestDispatcher rd = request.getRequestDispatcher("/view.html");
+			rd.forward(request, response);
 			
 		} catch (SQLException sql) {
 			sql.printStackTrace();
