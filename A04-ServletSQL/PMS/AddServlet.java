@@ -40,7 +40,7 @@ public class AddServlet extends HttpServlet {
 			pst.executeUpdate();
 			pst.close();
 			conn.close();
-			response.sendRedirect("http://localhost:8080/PMS/ViewServlet")
+			response.sendRedirect("http://localhost:8080/PMS/ViewServlet");
 			
 		} catch (SQLException sql) {
 			sql.printStackTrace();

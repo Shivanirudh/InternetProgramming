@@ -15,32 +15,39 @@ public class ViewServlet {
 
 
 		PrintWriter out = response.getWriter();
-		String age = request.getParameter("age");
-		String id = request.getParameter("id");
-		String name = request.getParameter("name");
-		String gender = request.getParameter("gender");
-		String addr = request.getParameter("address");
-		String status = request.getParameter("status");
-		String dov = request.getParameter("dov");
 
 		try {
 			Class.forName(JDBC_DRIVER);
 			Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			Statement stmt = conn.createStatement();
-			String sql = "INSERT INTO Patient_Details VALUES(?, ?, ?, ?, ?, ?, ?)";
-			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setString(1, name);
-			pst.setInt(2, Integer.parseInt(age));
-			pst.setInt(3, Integer.parseInt(id));
-			pst.setString(4, gender);
-			pst.setString(5, addr);
-			pst.setString(6, status);
-			pst.setString(7, dov);
+            String sql = "SELECT * FROM Patient_Details";
+			Statement pst = conn.createStatement();
 
-			pst.executeUpdate();
+            ResultSet rs = pst.executeQuery(sql);
+            while (rs.next()) {
+                response.setContentType("text/html");
+                int id = rs.getInt("id");
+                int age = rs.getInt("age");
+                String name = rs.getString("name");
+                String gender = rs.getString("gender");
+                String addr = rs.getString("address");
+                String status = rs.getString("marital_status");
+                String dov = rs.getString("date_of_visit");
+
+                out.println("Name:" + name + "<br>");
+                out.println("ID:" + id + "<br>");
+                out.println("Age:" + age + "<br>");
+                out.println("Gender:" + gender + "<br>");
+                out.println("Address:" + addr + "<br>");
+                out.println("Marital Status:" + status + "<br>");
+                out.println("Date of visit:" + dov + "<br>");
+                out.println("<br><br>");
+            }
+            
 			pst.close();
 			conn.close();
-			response.sendRedirect("http://localhost:8080/PMS/ViewServlet")
+            response.sendRedirect("http://localhost:8080/PMS/ViewServlet");
+            
 			
 		} catch (SQLException sql) {
 			sql.printStackTrace();
