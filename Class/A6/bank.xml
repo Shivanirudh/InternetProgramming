@@ -1,0 +1,20 @@
+<bank>
+    <record>
+        <state>Tamil Nadu</state>
+        <district>Chennai</district>
+        <branch>Mylapore</branch>
+        <address>Main road</address>
+        <ifsc>TNMYL</ifsc>
+        <micr>12345</micr>
+        <bcode>MYL123</bcode>
+    </record>
+    <record>
+        <state>Tamil Nadu</state>
+        <district>Chennai</district>
+        <branch>Adyar</branch>
+        <address>side road</address>
+        <ifsc>TNADY</ifsc>
+        <micr>09876</micr>
+        <bcode>ADY123</bcode>
+    </record>
+</bank>
