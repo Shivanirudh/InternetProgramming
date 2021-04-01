@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Session</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<h1>Profile Login</h1>
+	<hr><br>
+    <table>
+        <form id="loginform" action="http://localhost:8080/A05-ProfileServlet/LoginServlet">
+            <tr>
+                <td><label for="username">Username: </label></td>
+                <td><input name="username" id="username" type="text" required></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password: </label></td>
+                <td><input name="password" id="password" type="password" required></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Login" id="submit"></td>
+                <td><input type="button" value="Reset" id="resetBtn" onclick="myReset()"></td>
+            </tr>
+        </form>
+    </table>
+    <script>
+        function myReset(){
+            document.getElementById("loginform").reset();
+        }
+    </script>
+</body>
