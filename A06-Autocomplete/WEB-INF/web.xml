@@ -1,0 +1,10 @@
+<web-app>
+    <servlet>
+        <servlet-name>Country</servlet-name>
+        <servlet-class>Country</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Country</servlet-name>
+    <url-pattern>/Country</url-pattern>
+</servlet-mapping>
+</web-app>

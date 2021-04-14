@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Country autocomplete</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="styles_index.css">
+</head>
+
+<body>
+	<h1>Country list</h1>
+	<hr><br>
+    <table>
+        <form id="countryform">
+            <tr>
+                <td><label for="country">Country: </label></td>
+                <td><select name="country" id="country" required>
+
+                </select></td>
+            </tr>
+        </form>
+    </table>
+    <script>
+        var input = document.getElementById("country");
+        var msg = "";
+        var xhttp = new XMLHttpRequest();
+
+        function removeOptions(){
+            for(var i = input.options.length-1; i >= 0 ;i--){
+                input.remove(i);
+            }
+        }
+        document.addEventListener("keydown", (event) => {
+            if(event.keyCode == 8 || event.keyCode == 46){
+                msg = msg.slice(0, -1);
+            }
+            else{
+                msg += event.key;
+            }
+            var url = "Country?val="+msg; 
+            xhttp.onreadystatechange= function() {
+                if(this.readyState == 4 && this.status == 200) {
+
+                    var val = xhttp.responseText;
+                    var countries = val.split("/");
+                    for(var i = 0; i<countries.length;i++){
+                        if(i==0){
+                            removeOptions();
+                        }
+                        var opt = document.createElement("option");
+                        opt.value = countries[i];
+                        opt.text = countries[i];
+                        input.add(opt);
+                        input.value = msg;
+                    }
+                }
+            };
+            xhttp.open("GET", url, true);
+            xhttp.send(); 
+        });
+
+        window.addEventListener('load', (event) => {
+            document.getElementById("countryform").reset();
+        });
+    </script>
+</body>
