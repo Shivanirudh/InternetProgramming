@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Switch, Route, useParams} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
@@ -9,23 +9,21 @@ import Workshop from "./components/Workshop";
 import Registration from "./components/Registration";
 import Contact from "./components/Contact";
 import Paper from "./components/Paper";
+import Logo from "./components/images/logo.png";
+import Ssn from "./components/images/ssnbg.jpeg";
 
 
-function BlogPost() {
-  let { slug } = useParams();
-  console.log("SLUG" + slug);
-  return slug;
-}
 
 function App() {
   return (
     <div className="App">
+      <img src={Logo} alt="logo" className="logo"/>
       <div className="header">
                     <h1>SSN College of Engineering</h1>
                     <h2>Department of Computer Science and Engineering</h2>
                     <h2>International Conference on Computational Intelligence in Data Science</h2>
       </div>
-      <BlogPost />
+      <img src={Ssn} alt="bg" class="bg_img"/>
        <Router>
         <Navigation/>
         <Switch>

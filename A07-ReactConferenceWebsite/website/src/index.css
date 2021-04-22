@@ -5,6 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16pt;
+  color: white;
+  background: #414d0b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #727a17, #414d0b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #727a17, #414d0b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
+
 }
 
 code {
@@ -12,6 +20,30 @@ code {
     monospace;
 }
 
+
+.header {
+  margin-top:4rem;
+  color:white;
+  padding-top: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: rgba(0,0,0, 0.4);
+  border: 3px solid #f1f1f1;
+  font-weight: bold;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer {
+  background-color:black;
+  width: 100%; 
+  height: 1.5rem; 
+  color: white;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
 
 .root {
   min-height: 100%;
@@ -47,9 +79,80 @@ a:link, a:visited{
 }
 
 .navbar li{
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .navbar li:hover{
   background-color: blue;
+}
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+.logo{
+    position:absolute;
+    top:25px;
+    left:25px;
+    width:100px; 
+    height:50px;
+    background-color: white;
+}
+
+.bg_img{
+  display:block;
+  margin-left:auto; 
+  margin-right: auto; 
+  top: auto;width: 80%;
+  z-index: -2;
+  position: fixed;
+  top: 20%;
+  left:10%;
+  filter: blur(3px);
+}
+
+.content{
+  margin:1rem;
+  padding:0.5rem;
+  box-sizing:border-box;
+  border: 3px solid #f1f1f1;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  background-color: rgba(26, 59, 43, 0.486);
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+
+.committee_content{
+  list-style-type: none;
+}
+
+.committee_content li {
+  text-indent: 3rem;
+}
+
+.committee_content li h3 {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+
+.track_list li{
+  text-indent: 3rem;
+}
+
+.track_list li p{
+  font-weight: 700;
+}
+
+.track_list li ul {
+  list-style-type: circle;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+.mail{
+  text-decoration: none;
+  color: white;
 }
