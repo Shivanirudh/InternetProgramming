@@ -13,23 +13,24 @@ fs.readFile("greetings.txt", function(err, info){
 });
 console.log("Completed reading file.");
 
-const read = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-console.log(`\n${greetings[Math.floor(Math.random() * greetings.length)]}`);
 http.createServer(function (req, res) {
+    //console.log(req.name);
     
-    var query = url.parse(req.name, true);
-    if(query.name){
-        var greet = greetings[Math.floor(Math.random() * greetings.length)];
-        console.log(greet);
-        res.write(`\n${greet} ${query.name}`);
-    }
-    else{
-        res.write('Hello World!'); 
-    }
-    res.end(); 
+    // var query = url.parse(req.name, true).query;
+    // console.log(query)
+    // if(query.name){
+    //     var greet = greetings[Math.floor(Math.random() * greetings.length)];
+    //     console.log(greet);
+    //     res.write(`\n${greet} ${query.name}`);
+    // }
+    // else{
+    //     res.write('Hello World!'); 
+    // }
+    // res.end(); 
+    res.writeHead(200, {'Content-Type': 'text/html'});
+  var q = url.parse(req.url, true).query;
+  var txt = q.year + " " + q.month;
+  console.log(txt);
+  res.write(txt);
+  res.end();
 }).listen(8080); 
-read.close();
