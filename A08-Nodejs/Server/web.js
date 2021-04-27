@@ -14,23 +14,14 @@ fs.readFile("greetings.txt", function(err, info){
 console.log("Completed reading file.");
 
 http.createServer(function (req, res) {
-    //console.log(req.name);
     
-    // var query = url.parse(req.name, true).query;
-    // console.log(query)
-    // if(query.name){
-    //     var greet = greetings[Math.floor(Math.random() * greetings.length)];
-    //     console.log(greet);
-    //     res.write(`\n${greet} ${query.name}`);
-    // }
-    // else{
-    //     res.write('Hello World!'); 
-    // }
-    // res.end(); 
-    res.writeHead(200, {'Content-Type': 'text/html'});
-  var q = url.parse(req.url, true).query;
-  var txt = q.year + " " + q.month;
-  console.log(txt);
-  res.write(txt);
-  res.end();
+    var query = url.parse(req.url, true).query;
+    if(query.name){
+        var greet = greetings[Math.floor(Math.random() * greetings.length)];
+        res.write(`\n${greet} ${query.name}`);
+    }
+    else{
+        res.write('Hello World!'); 
+    }
+    res.end(); 
 }).listen(8080); 
