@@ -5,81 +5,63 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="styles.css">
     <style>
-        body{
-    font-size: 16pt;
+     body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    background: rgb(10,11,41);
-    background: linear-gradient(135deg, rgba(10,11,41,1) 20%, rgba(11,49,13,1) 80%); 
     color: white;
     height: 100vh;
 }
 
 h1{
-	font-size: 50pt;
-	text-align: center;
+	text-align: left;
 	color: white;
 }
 
-table{
-    width: 100%;
-	text-align: center;
-    border-spacing: 15px;
+.new_mail{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin: auto;
+    width: max-content;    
 }
 
+.new_mail h1{
+    background-color: gray;
+}
 
+textarea {
+    width: 97%;
+}
+#submit {
+    text-align: left;
+    background-color: blue;
+}
     </style>
 </head>
 
 <body>
-	<h1>Add Patient</h1>
-	<hr><br>
-    <table>
-        <form name="regform" id="regform" action="http://localhost:8080/PMS/AddServlet" >
-            <tr>
-                <td><label for="name">Name: </label></td>
-                <td><input name="name" id="name" type="text" required></td>
-            </tr>
-            <tr>
-                <td><label for="age">Age: </label></td>
-                <td><input name="age" id="age" type="number" required></td>
-            </tr>
-            <tr>
-                <td><label for="id">ID: </label></td>
-                <td><input name="id" id="id" type="number" required></td>
-            </tr>
-            <tr>
-                <td><label >Gender: </label></td>
-                    <td><input id="male" type="radio" value="Male" name="gender"><label for="male">Male</label>
-                    <input id="female" type="radio" value="Female" name="gender"><label for="female">Female</label>
-                    <input id="other" type="radio" value="Other" name="gender"><label for="other">Other</label>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="address">Address: </label></td>
-                <td><textarea name="address" id="address" placeholder="Enter full address" required></textarea></td>
-            </tr>
-            <tr>
-                <td><label for="status">Marital Status: </label></td>
-                <td><select name="status" id="status">
-                    <option value="none"></option>
-                    <option value="Married">Married</option>
-                    <option value="single">Single</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td><label for="dov">Date of Visit: </label></td>
-                <td><input name="dov" id="dov" type="date" placeholder="dd/mm/yyyy"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Submit" id="submit" ></td>
-                <td><input type="button" value="Reset" id="resetBtn" onclick="myReset()"></td>
-            </tr>
+    <div class="new_mail">
+        <form name="compose" id="compose" action="http://localhost:8080/Model/Servlet" >
+            <h1>New Message</h1>    
+            <input name="email" id="email" type="email" placeholder="To" required>
+            <br>
+            <input name="subject" id="subject" type="text" placeholder="Subject" required>
+            <br>
+            <textarea name="content" id="content" placeholder="Write something...">
+            </textarea>
+            <input type="submit" name="submit" id="submit" value="Send" onclick="ValidateEmail()">
         </form>
-    </table>
+    </div>
     <script>
-        localStorage.setItem("source", 1);
+        function ValidateEmail() {
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(document.getElementById("email").value))
+        {
+            return (true)
+        }
+            alert("You have entered an invalid email address!")
+            return (false)
+        }
     </script>
 </body>
 </html>

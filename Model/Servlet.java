@@ -1,48 +1,63 @@
 import java.io.*;
+import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import java.sql.*;
+
 public class Servlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException{
+			throws ServletException, IOException {
+			String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+			String DB_URL = "jdbc:mysql://localhost:3306/mysql?autoReconnect=true&useSSL=false";
+	
+			String USER = "shiva";
+			String PASS = "$$Shiva123";
+
 			response.setContentType("text/html");
 
 			PrintWriter out = response.getWriter();
-			String id= request.getParameter("id");
-			String name = request.getParameter("name");
-			String designation = request.getParameter("designation");
-			String dept = request.getParameter("dept");
-			String salary = request.getParameter("salary");
-			String phone = request.getParameter("phone");
-			String address = request.getParameter("address");
-			String dob = request.getParameter("dob");
-			String gender = request.getParameter("gender");
-			String status = request.getParameter("status");
+			String email = request.getParameter("email");
+			String subject = request.getParameter("subject");
+			String content = request.getParameter("content");
 
-			int sal = Integer.parseInt(salary);
-			if ("RA".equals(designation)) {
-				designation = "Research Assistant";
-				sal *= 1;
-			}
-			else if ("TA".equals(designation)) {
-				designation = "Teaching Assistant";
-				sal *= 1.25;
-			}
-			else if ("AP".equals(designation)) {
-				designation = "Associate Professor";
-				sal *= 2;
-			}
-			else if ("Prof".equals(designation)) {
-				designation = "Professor";
-				sal *= 2.5;
-			}
+			try {
+				Class.forName(JDBC_DRIVER);
+				Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+				Statement stmt = conn.createStatement();
+				String ins_sql = "INSERT INTO sent VALUES(?, ?, ?)";
+				PreparedStatement ins_pst = conn.prepareStatement(ins_sql);
+				ins_pst.setString(1, email);
+				ins_pst.setString(2, subject);
+				ins_pst.setString(3, content);
+	
+				ins_pst.executeUpdate();
+				ins_pst.close();
+				
+				out.println("<B> Record added successfully</B><br>");
 
-			out.println("<html>");
-			out.println("<head><title>Details Obtained</title><link rel='stylesheet' href='styles_servlet.css'></head>");
-			out.println("<body><h1>Employee Details</h1>");
-			out.println("<hr><br>");
-			out.println(
-					"<table align='center'><tr><th>ID</th><td>" + id + "</td></tr><tr><th>Name</th><td>" + name + "</td></tr><tr><th>Designation</th><td>" + designation + "</td></tr><tr><th>Department</th><td>" + dept + "</td></tr><tr><th>Basic Pay:</th><td>" + salary + "</td></tr><tr><th>Gross Pay:</th><td>" + sal + "</td></tr><tr><th>Contact</th><td>" + phone + "</td></tr><tr><th>Address</th><td>" + address + "</td></tr><tr><th>DOB</th><td>" + dob + "</td></tr><tr><th>Gender</th><td>" + gender + "</td></tr><tr><th>Marital Status</th><td>" + status + "</td></tr></table>");
-			out.println("</body></html>");
-			out.close();
+				String show_sql = "SELECT * FROM sent";
+				Statement show_pst = conn.createStatement();
+
+				ResultSet rs = show_pst.executeQuery(show_sql);
+				out.println("<!DOCTYPE html>");
+				out.println("<html><head></head><body style='font-size:15pt'>");
+				out.println("<table style='border-spacing:50px'>");
+				out.println("<tr><th>To address</th><th>Subject</th><th>Body</th></tr>");
+				while (rs.next()) {
+					response.setContentType("text/html");
+					String show_email = rs.getString("to_address");
+					String show_subject = rs.getString("subject");
+					String show_content = rs.getString("body");
+
+					out.println("<tr><td>" + show_email + "</td><td>" + show_subject + "</td><td>" + show_content + "</td></tr>");
+				}
+				conn.close();
+			} catch (SQLException sql) {
+				sql.printStackTrace();
+				out.println(sql);
+			} catch (Exception e) {
+				e.printStackTrace();
+				out.println(e);
+			}
 		}
 }

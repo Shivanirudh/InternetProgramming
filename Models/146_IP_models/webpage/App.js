@@ -7,11 +7,11 @@ import image5 from "./img5.jpeg";
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import React from 'react';
 
-const img1 = React.createElement("img", {className: "image", src:{image1}, width:"300px", height:"300px"});
-const img2 = React.createElement("img", {className: "image", src:{image2}, width:"300px", height:"300px"});
-const img3 = React.createElement("img", {className: "image", src:{image3}, width:"300px", height:"300px"});
-const img4 = React.createElement("img", {className: "image", src:{image4}, width:"300px", height:"300px"});
-const img5 = React.createElement("img", {className: "image", src:{image5}, width:"300px", height:"300px"});
+const img1 = React.createElement("img", {className: "image", src:image1, width:"300px", height:"300px"});
+const img2 = React.createElement("img", {className: "image", src:image2, width:"300px", height:"300px"});
+const img3 = React.createElement("img", {className: "image", src:image3, width:"300px", height:"300px"});
+const img4 = React.createElement("img", {className: "image", src:image4, width:"300px", height:"300px"});
+const img5 = React.createElement("img", {className: "image", src:image5, width:"300px", height:"300px"});
 
 function App() {
   return (
