@@ -1,0 +1,4 @@
+[{"_id":3,"name":"Delhi","popular_event":"Capital"},
+{"_id":4,"name":"Madurai","popular_event":"Pandian dynasty"},
+{"_id":2,"name":"Mahabalipuram","popular_event":"War"},
+{"_id":1,"name":"Tanjore","popular_event":"Big temple"}]
