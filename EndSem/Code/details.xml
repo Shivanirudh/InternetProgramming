@@ -1,0 +1,32 @@
+<catalog>
+    <item>
+        <name>Poco M3</name>
+        <specs>8GB RAM</specs>
+        <stock>9</stock>
+    </item>
+    <item>
+        <name>Redmi Note 6 Pro</name>
+        <specs>6GB RAM</specs>
+        <stock>10</stock>
+    </item>
+    <item>
+        <name>HP 15s Celeron</name>
+        <specs>Dual Core</specs>
+        <stock>20</stock>
+    </item>
+    <item>
+        <name>Lenovo Ideapad 110</name>
+        <specs>Pentium Processor</specs>
+        <stock>7</stock>
+    </item>
+    <item>
+        <name>Sony Bravia</name>
+        <specs>40-inch</specs>
+        <stock>15</stock>
+    </item>
+    <item>
+        <name>Micromax M403</name>
+        <specs>28-inch 4k HD</specs>
+        <stock>19</stock>
+    </item>
+</catalog>

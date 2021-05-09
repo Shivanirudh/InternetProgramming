@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>E-shopping</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1 class="title">E-shopping</h1>
+        <div class="navigation-bar">
+            <nav>
+                <button class="navig-button menu">
+                    <a class="navig-link" href="#">Shop by category</a>
+                    <div class="menu-list">
+                        <a id="mobile" onclick="displayItem(event)" class="navig-link" href="#">Mobile</a><br>
+                        <a id="computer" onclick="displayItem(event)" class="navig-link" href="#">Computer</a><br>
+                        <a id="tv" onclick="displayItem(event)" class="navig-link" href="#">TV</a><br> 
+                    </div>
+                </button>
+                <button class="navig-button">
+                    <a class="navig-link" href="#orders">Your orders</a>
+                </button>
+                <button class="navig-button">
+                    <a class="navig-link" href="#cart">Cart</a>
+                </button>
+            </nav>
+        </div>
+        <div class="content">
+            <div id="items"></div>
+            <div id="details"></div>
+            <div id="cart">
+                <h2 class="title">Cart</h2>
+                <div id="cart-stuff"></div>
+                <button class="navig-button order-button" onclick="orderIt(event)"> >> Place Order << </button>
+            </div>
+            <div id="orders">
+                <h2 class="title">Your orders</h2>
+                <div id="order-stuff"></div>
+                <h3 id="amount"></h3>
+            </div>
+        </div>
+    <script>
+        function displayItem(event){
+            var item_type = event.target.id;
+            var item_list = {
+                'mobile' : [{'name': 'Poco M3', 'colour': 'yellow', 'price':10999}, {'name':'Redmi Note 6 Pro', 'colour':'black', 'price':15999}],
+                'computer' : [{'name':'HP 15s Celeron', 'colour':'grey', 'price':24990}, {'name':'Lenovo Ideapad 110', 'colour':'black', 'price':20999}],
+                'tv' : [{'name': 'Sony Bravia', 'colour':'black', 'price':34000}, {'name':'Micromax M403', 'colour':'grey', 'price':25000}] 
+            }
+
+            var items = "<h2 class='title'>Items in stock</h2>";
+            for(var i = 0; i<item_list[item_type].length; i++){
+                items += `<div class='item' id='${item_list[item_type][i]['name']}'><h4 class='head'>Model:</h4><h4>${item_list[item_type][i]['name']}</h4><h5 class='head'>Colour:</h4><h5>${item_list[item_type][i]['colour']}</h5><h5 class='head'>Price:</h4><h5>${item_list[item_type][i]['price']}</h5>`;
+                items += `<button class='navig-button order-button' onclick='addToCart(event)'> >> Add to cart << </button>`;
+                items += `<button class='navig-button order-button' onclick="getDetails('${item_list[item_type][i]['name']}')"> >> View More << </button></div>`; 
+            }
+            var item_stuff = document.getElementById("items");
+            item_stuff.innerHTML = items; 
+        }
+
+        function addToCart(event){
+            var item_selected = event.target.parentNode.id;
+            var colour = event.target.parentNode.children[3].innerHTML;
+            var price = event.target.parentNode.children[5].innerHTML;
+            
+            var item = `<div id='${item_selected}-selected'><h4 class='head'>Model:</h4><h4>${item_selected}</h4><h5 class='head'>Colour:</h5><h5>${colour}</h5><h5 class='head'>Price:</h5><h5>${price}</h5><button id="remove" class="order-button remove" onclick="removeFromCart(event)">x</button>`;
+            var cart_stuff = document.getElementById("cart-stuff");
+            cart_stuff.innerHTML += item;
+        }
+
+        function removeFromCart(event){
+            var item = event.target.parentNode;
+            var item_id = event.target.parentNode.id;
+            var cart_stuff = document.getElementById("cart-stuff");
+            var cart_children = cart_stuff.children;
+            for(var i = 0;i<cart_children.length;i++){
+                if(cart_children[i].id === item_id){
+                    cart_stuff.removeChild(item);
+                }
+            }
+        }
+
+        function orderIt(event){
+            var amount = 0
+            var items = event.target.parentNode.children[1].children;
+            console.log(items);
+            for(var i = 0; i < items.length;i++){
+                console.log(items[i]);
+                amount += parseInt(items[i].children[5].innerHTML);
+            }
+            var order_stuff = document.getElementById("order-stuff");
+            var amount_area = document.getElementById("amount");
+            var child = event.target.parentNode.children[1];
+            order_stuff.appendChild(child);
+            amount_area.innerHTML = amount;
+        }
+
+        function getDetails(name){
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    var xmlDoc = this.responseXML;
+                    var items = xmlDoc.getElementsByTagName('item');
+                    for(var i=0;i<items.length;i++){
+                        var item_name = items[i].getElementsByTagName('name')[0].childNodes[0].nodeValue;
+                        var item_specs = items[i].getElementsByTagName('specs')[0].childNodes[0].nodeValue;
+                        var item_stock = items[i].getElementsByTagName('stock')[0].childNodes[0].nodeValue;
+
+                        if(item_name == name){
+                            var details = document.getElementById("details");
+                            details.innerHTML = `<div><h4>Details</h4><h5 class='head'>Specifications:</h5><h5>${item_specs}</h5><h5 class='head'>Left in stock:</h5><h5>${item_stock}</h5></div>`;
+                        }
+                    }
+                }
+            }
+            xmlHttp.open('GET', 'details.xml', true);
+            xmlHttp.send();
+        }
+    </script>
+    </body>
+</html>
